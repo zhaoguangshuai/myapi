@@ -2,12 +2,17 @@
 package bootstrap
 
 import (
+	"fmt"
 	"gohub/routes"
 	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 )
+
+func init() {
+	fmt.Println(555)
+}
 
 // SetupRoute 路由初始化
 func SetupRoute(router *gin.Engine) {
