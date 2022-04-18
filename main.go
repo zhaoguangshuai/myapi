@@ -27,7 +27,10 @@ func main() {
 	// 初始化 Gin 实例
 	r := gin.New()
 
-	// 注册中间件
+	// 初始化 DB
+	bootstrap.SetupDB()
+
+	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
 
 	// 运行服务
