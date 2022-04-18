@@ -2,7 +2,6 @@
 package auth
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	v1 "gohub/app/http/controllers/api/v1"
 	"gohub/app/models/user"
@@ -21,27 +20,30 @@ func (sc *SignupController) IsPhoneExist(c *gin.Context) {
 	//	Phone string `json:"phone"`
 	//}
 	request := requests.SignupPhoneExistRequest{}
+	if ok := requests.Validate(c, &request, requests.SignupPhoneExist); !ok {
+		return
+	}
 	// 解析 json 请求
-	if err := c.ShouldBindJSON(&request); err != nil {
-		// 解析失败
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"error": err.Error(),
-		})
-		// 打印错误信息
-		fmt.Println(err.Error())
-		// 出错了，中断请求
-		return
-	}
-
-	// 表单验证
-	errs := requests.ValidateSignupPhoneExist(&request, c)
-	if errs != nil {
-		// 验证失败，返回 422 转台吗和错误信息
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"errors": errs,
-		})
-		return
-	}
+	//if err := c.ShouldBindJSON(&request); err != nil {
+	//	// 解析失败
+	//	c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+	//		"error": err.Error(),
+	//	})
+	//	// 打印错误信息
+	//	fmt.Println(err.Error())
+	//	// 出错了，中断请求
+	//	return
+	//}
+	//
+	//// 表单验证
+	//errs := requests.ValidateSignupPhoneExist(&request, c)
+	//if errs != nil {
+	//	// 验证失败，返回 422 转台吗和错误信息
+	//	c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+	//		"errors": errs,
+	//	})
+	//	return
+	//}
 
 	// 检查数据库并返回响应
 	c.JSON(http.StatusOK, gin.H{
@@ -53,26 +55,28 @@ func (sc *SignupController) IsEmailExist(c *gin.Context) {
 
 	// 初始化请求对象
 	request := requests.SignupEmailExistRequest{}
-
-	if err := c.ShouldBindJSON(&request); err != nil {
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"error": err.Error(),
-		})
-		// 打印错误信息
-		fmt.Println(err.Error())
-		// 出错了，中断请求
+	if ok := requests.Validate(c, &request, requests.SignupEmailExist); !ok {
 		return
 	}
-
-	// 表单验证
-	errs := requests.ValidateSignupEmailExist(&request, c)
-	if len(errs) > 0 {
-		// 验证失败， 返回 422 状态码和错误信息
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"errors": errs,
-		})
-		return
-	}
+	//if err := c.ShouldBindJSON(&request); err != nil {
+	//	c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+	//		"error": err.Error(),
+	//	})
+	//	// 打印错误信息
+	//	fmt.Println(err.Error())
+	//	// 出错了，中断请求
+	//	return
+	//}
+	//
+	//// 表单验证
+	//errs := requests.ValidateSignupEmailExist(&request, c)
+	//if len(errs) > 0 {
+	//	// 验证失败， 返回 422 状态码和错误信息
+	//	c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+	//		"errors": errs,
+	//	})
+	//	return
+	//}
 
 	// 检查数据库并返回响应
 	c.JSON(http.StatusOK, gin.H{
