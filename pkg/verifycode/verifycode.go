@@ -56,7 +56,7 @@ func (vc *VerifyCode) SendSMS(phone string) bool {
 }
 
 // SendEmail 发送邮件验证码，调用示例：
-//         verifycode.NewVerifyCode().SendEmail(request.Email)
+// verifycode.NewVerifyCode().SendEmail(request.Email)
 func (vc *VerifyCode) SendEmail(email string) error {
 
 	// 生成验证码
