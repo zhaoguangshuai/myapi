@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
@@ -44,6 +43,9 @@ func main() {
 
 	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
+
+	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819939"), "正确的验证码")
+	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819949"), "错误的验证码")
 
 	// 运行服务
 	err := r.Run(":" + config.Get("app.port"))
