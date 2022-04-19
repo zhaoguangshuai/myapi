@@ -15,6 +15,7 @@ type VerifyCodeController struct {
 	v1.BaseAPIController
 }
 
+// ShowCaptcha 获取图形验证码
 func (vc *VerifyCodeController) ShowCaptcha(c *gin.Context) {
 	// 生成验证吗
 	id, b64s, err := captcha.NewCaptcha().GenerateCaptcha()
@@ -31,6 +32,7 @@ func (vc *VerifyCodeController) ShowCaptcha(c *gin.Context) {
 	//})
 }
 
+// SendUsingPhone 发送短信验证码
 func (vc *VerifyCodeController) SendUsingPhone(c *gin.Context) {
 	// 1. 验证表单
 	request := requests.VerifyCodePhoneRequest{}
@@ -41,6 +43,22 @@ func (vc *VerifyCodeController) SendUsingPhone(c *gin.Context) {
 	// 2. 发送 sms
 	if ok := verifycode.NewVerifyCode().SendSMS(request.Phone); !ok {
 		response.Abort500(c, "发送短信失败～")
+	} else {
+		response.Success(c)
+	}
+}
+
+func (vc *VerifyCodeController) SendUsingEmail(c *gin.Context) {
+	// 1. 验证表单
+	request := requests.VerifyCodeEmailRequest{}
+	if ok := requests.Validate(c, &request, requests.VerifyCodeEmail); !ok {
+		return
+	}
+
+	// 2. 发送邮件验证码
+	err := verifycode.NewVerifyCode().SendEmail(request.Email)
+	if err != nil {
+		response.Abort500(c, "发送 Email 验证码失败～")
 	} else {
 		response.Success(c)
 	}
