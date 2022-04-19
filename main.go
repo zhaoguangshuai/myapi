@@ -24,6 +24,9 @@ func main() {
 	flag.Parse()
 	config.InitConfig(env)
 
+	// 初始化 Logger
+	bootstrap.SetupLogger()
+
 	// 初始化 Gin 实例
 	r := gin.New()
 
