@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
-
-	"github.com/gin-gonic/gin"
 )
 
 func init() {
@@ -44,6 +43,10 @@ func main() {
 	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
 
+	//sms.NewSMS().Send("18529113912", sms.Message{
+	//	Template: config.GetString("sms.aliyun.template_code"),
+	//	Data:     map[string]string{"code": "123456"},
+	//})
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819939"), "正确的验证码")
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819949"), "错误的验证码")
 
