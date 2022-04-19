@@ -43,10 +43,14 @@ func main() {
 	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
 
+	// 测试第三方短信服务提供商发送短信
 	//sms.NewSMS().Send("18529113912", sms.Message{
 	//	Template: config.GetString("sms.aliyun.template_code"),
 	//	Data:     map[string]string{"code": "123456"},
 	//})
+	// 发送短信并存储
+	// verifycode.NewVerifyCode().SendSMS("18529113912")
+	// 图像验证码验证
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819939"), "正确的验证码")
 	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819949"), "错误的验证码")
 
