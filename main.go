@@ -43,6 +43,10 @@ func main() {
 	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
 
+	//r.GET("/test_guest", middlewares.GuestJWT(), func(context *gin.Context) {
+	//	context.String(http.StatusOK, "hello guest")
+	//})
+
 	//r.GET("/test_auth", middlewares.AuthJWT(), func(c *gin.Context) {
 	//	userModel := auth.CurrentUser(c)
 	//	response.Data(c, userModel)
