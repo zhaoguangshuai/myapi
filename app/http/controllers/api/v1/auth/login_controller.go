@@ -36,6 +36,7 @@ func (lc *LoginController) LoginByPhone(c *gin.Context) {
 	}
 }
 
+// LoginByPassword 账号密码登录
 func (lc *LoginController) LoginByPassword(c *gin.Context) {
 	// 1. 验证表单
 	request := requests.LoginByPasswordRequest{}
@@ -47,9 +48,21 @@ func (lc *LoginController) LoginByPassword(c *gin.Context) {
 	user, err := auth.Attempt(request.LoginID, request.Password)
 	if err != nil {
 		// 失败，显示错误提示
-		response.Unauthorized(c, "登录失败")
+		response.Error(c, err, "登录失败")
 	} else {
 		token := jwt.NewJWT().IssueToken(user.GetStringID(), user.Name)
+		response.JSON(c, gin.H{
+			"token": token,
+		})
+	}
+}
+
+func (lc *LoginController) RefreshToken(c *gin.Context) {
+	token, err := jwt.NewJWT().RefreshToken(c)
+
+	if err != nil {
+		response.Error(c, err, "令牌刷新失败")
+	} else {
 		response.JSON(c, gin.H{
 			"token": token,
 		})
