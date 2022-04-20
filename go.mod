@@ -19,7 +19,10 @@ require (
 	gorm.io/gorm v1.23.4
 )
 
-require github.com/golang-jwt/jwt v3.2.2+incompatible
+require (
+	github.com/golang-jwt/jwt v3.2.2+incompatible
+	github.com/ulule/limiter/v3 v3.10.0
+)
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
@@ -47,6 +50,7 @@ require (
 	github.com/pborman/uuid v1.2.1 // indirect
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.0-beta.8 // indirect
+	github.com/pkg/errors v0.9.1 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect

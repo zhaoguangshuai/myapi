@@ -16,6 +16,7 @@ func Attempt(email string, password string) (user.User, error) {
 	}
 
 	if !userModel.ComparePassword(password) {
+		logger.LogIf(errors.New("密码错误"))
 		return user.User{}, errors.New("密码错误")
 	}
 
