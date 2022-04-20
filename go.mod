@@ -8,8 +8,8 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible
 	github.com/mojocn/base64Captcha v1.3.5
-	github.com/spf13/cast v1.4.1
-	github.com/spf13/viper v1.11.0
+	github.com/spf13/cast v1.4.1 // 修改 .env 配置信息的类型使用
+	github.com/spf13/viper v1.11.0 // 解析 .env 配置信息使用
 	github.com/thedevsaddam/govalidator v1.9.10
 	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
@@ -18,6 +18,8 @@ require (
 	gorm.io/driver/sqlite v1.3.1
 	gorm.io/gorm v1.23.4
 )
+
+require github.com/golang-jwt/jwt v3.2.2+incompatible
 
 require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
