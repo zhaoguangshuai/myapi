@@ -56,6 +56,7 @@ func loadEnv(envSuffix string) {
 	envPath := ".env"
 	if len(envSuffix) > 0 {
 		filepath := ".env." + envSuffix
+		fmt.Println("filepath=>", filepath)
 		if _, err := os.Stat(filepath); err == nil {
 			// 如 .env.testing 或 .env.stage
 			envPath = filepath

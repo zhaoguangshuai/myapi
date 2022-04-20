@@ -8,6 +8,10 @@ import (
 	"github.com/mgutz/ansi"
 )
 
+func init() {
+	fmt.Println(666)
+}
+
 // Success 打印一条成功消息，绿色输出
 func Success(msg string) {
 	colorOut(msg, "green")

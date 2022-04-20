@@ -24,7 +24,6 @@ var Redis *RedisClient
 
 // ConnectRedis 连接 redis 数据库，设置全局的 Redis 对象
 func ConnectRedis(address string, username string, password string, db int) {
-	logger.Dump(address, "111111111")
 	once.Do(func() {
 		Redis = NewClient(address, username, password, db)
 	})

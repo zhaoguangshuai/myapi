@@ -1,72 +1,64 @@
 package main
 
 import (
-	"flag"
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"gohub/app/cmd"
 	"gohub/bootstrap"
-	btsConfig "gohub/config"
+	btsConig "gohub/config"
 	"gohub/pkg/config"
+	"gohub/pkg/console"
+	"os"
+
+	"github.com/spf13/cobra"
 )
 
 func init() {
-	fmt.Println(444)
 	// 加载 config 目录下的配置信息
-	btsConfig.Initialize()
+	btsConig.Initialize()
 }
 
 func main() {
-	// 配置初始化，依赖命令行 --env 参数
-	var env string
-	flag.StringVar(&env, "env", "", "加载 .env 文件，如 --env=testing 加载的是 .env.testing 文件")
-	flag.Parse()
-	config.InitConfig(env)
+	fmt.Println(11111111111)
+	// 应用的主入口，默认调用 cmd.CmdServe 命令
+	var rootCmd = &cobra.Command{
+		Use:   config.Get("app.name"),
+		Short: "A simple forum project",
+		Long:  `Default will run "serve" command, you can use "-h" flag to see all subcommands`,
 
-	// 初始化 Logger
-	bootstrap.SetupLogger()
+		// rootCmd 的所有子命令都会执行以下代码
+		PersistentPreRun: func(command *cobra.Command, args []string) {
 
-	// 设置 gin 的运行模式，支持 debug, release, test
-	// release 会屏蔽调试信息，官方建议生产环境中使用
-	// 非 release 模式 gin 终端打印太多信息，干扰到我们程序中的 Log
-	// 故此设置为 release，有特殊情况手动改为 debug 即可
-	gin.SetMode(gin.ReleaseMode)
+			// 配置初始化，依赖命令行 --env 参数
+			fmt.Println("cmd.env", cmd.Env)
+			config.InitConfig(cmd.Env)
+			fmt.Println(777777)
+			// 初始化 Logger
+			bootstrap.SetupLogger()
+			fmt.Println(888888)
+			// 初始化数据库
+			bootstrap.SetupDB()
 
-	// 初始化 Gin 实例
-	r := gin.New()
+			// 初始化 Redis
+			bootstrap.SetupRedis()
 
-	// 初始化 DB
-	bootstrap.SetupDB()
+			// 初始化缓存
+		},
+	}
+	fmt.Println(33333333)
+	// 注册子命令
+	rootCmd.AddCommand(
+		cmd.CmdServe,
+	)
 
-	// 初始化 Redis
-	bootstrap.SetupRedis()
+	// 配置默认运行 Web 服务
+	fmt.Println("rootCmd.use=>", rootCmd.Use)
+	cmd.RegisterDefaultCmd(rootCmd, cmd.CmdServe)
 
-	// 初始化路由绑定
-	bootstrap.SetupRoute(r)
+	// 注册全局参数，--env
+	cmd.RegisterGlobalFlags(rootCmd)
 
-	//r.GET("/test_guest", middlewares.GuestJWT(), func(context *gin.Context) {
-	//	context.String(http.StatusOK, "hello guest")
-	//})
-
-	//r.GET("/test_auth", middlewares.AuthJWT(), func(c *gin.Context) {
-	//	userModel := auth.CurrentUser(c)
-	//	response.Data(c, userModel)
-	//})
-
-	// 测试第三方短信服务提供商发送短信
-	//sms.NewSMS().Send("18529113912", sms.Message{
-	//	Template: config.GetString("sms.aliyun.template_code"),
-	//	Data:     map[string]string{"code": "123456"},
-	//})
-	// 发送短信并存储
-	// verifycode.NewVerifyCode().SendSMS("18529113912")
-	// 图像验证码验证
-	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819939"), "正确的验证码")
-	// logger.Dump(captcha.NewCaptcha().VerifyCaptcha("ggBk32tyF80dDBYzq6S4", "819949"), "错误的验证码")
-
-	// 运行服务
-	err := r.Run(":" + config.Get("app.port"))
-	if err != nil {
-		// 错误处理， 端口被占用了或者其他错误
-		fmt.Println(err.Error())
+	// 执行主命令
+	if err := rootCmd.Execute(); err != nil {
+		console.Exit(fmt.Sprintf("Failed to run app with %v: %s", os.Args, err.Error()))
 	}
 }

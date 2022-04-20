@@ -22,6 +22,7 @@ require (
 require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
+	github.com/spf13/cobra v1.4.0
 	github.com/ulule/limiter/v3 v3.10.0
 )
 
@@ -38,6 +39,7 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.1.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
