@@ -43,6 +43,11 @@ func main() {
 	// 初始化路由绑定
 	bootstrap.SetupRoute(r)
 
+	//r.GET("/test_auth", middlewares.AuthJWT(), func(c *gin.Context) {
+	//	userModel := auth.CurrentUser(c)
+	//	response.Data(c, userModel)
+	//})
+
 	// 测试第三方短信服务提供商发送短信
 	//sms.NewSMS().Send("18529113912", sms.Message{
 	//	Template: config.GetString("sms.aliyun.template_code"),
