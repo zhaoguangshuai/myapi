@@ -31,6 +31,8 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			lgc := new(auth.LoginController)
 			// 使用手机号，短信验证码进行登录
 			authGroup.POST("/login/using-phone", lgc.LoginByPhone)
+			// 账号密码登录，账号支持手机号，email，用户名
+			authGroup.POST("/login/using-password", lgc.LoginByPassword)
 		}
 	}
 }
