@@ -4,6 +4,7 @@ package make
 import (
 	"embed"
 	"fmt"
+	"gohub/app/cmd"
 	"gohub/pkg/console"
 	"gohub/pkg/file"
 	"gohub/pkg/str"
@@ -70,6 +71,7 @@ func init() {
 		CmdMakeModel,
 		CmdMakeAPIController,
 		CmdMakeRequest,
+		cmd.CmdMigrate,
 	)
 }
 
