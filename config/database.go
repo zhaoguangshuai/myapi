@@ -1,11 +1,12 @@
 package config
 
 import (
+	"fmt"
 	"gohub/pkg/config"
 )
 
 func init() {
-
+	fmt.Println(888)
 	config.Add("database", func() map[string]interface{} {
 		return map[string]interface{}{
 

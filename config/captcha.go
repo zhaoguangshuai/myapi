@@ -1,8 +1,12 @@
 package config
 
-import "gohub/pkg/config"
+import (
+	"fmt"
+	"gohub/pkg/config"
+)
 
 func init() {
+	fmt.Println(777)
 	config.Add("captcha", func() map[string]interface{} {
 		return map[string]interface{}{
 

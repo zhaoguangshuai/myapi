@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"gohub/app/cmd"
-	"gohub/bootstrap"
-	btsConig "gohub/config"
-	"gohub/pkg/config"
-	"gohub/pkg/console"
+	"gohub/bootstrap"       // 2
+	btsConig "gohub/config" // 4 依赖 1
+	"gohub/pkg/config"      // 1
+	"gohub/pkg/console"     // 3
 	"os"
 
 	"github.com/spf13/cobra"
@@ -48,6 +48,8 @@ func main() {
 	// 注册子命令
 	rootCmd.AddCommand(
 		cmd.CmdServe,
+		cmd.CmdKey,
+		cmd.CmdPlay,
 	)
 
 	// 配置默认运行 Web 服务
