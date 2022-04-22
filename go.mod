@@ -20,6 +20,7 @@ require (
 )
 
 require (
+	github.com/bxcodec/faker/v3 v3.8.0
 	github.com/gertd/go-pluralize v0.2.0
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/iancoleman/strcase v0.2.0
