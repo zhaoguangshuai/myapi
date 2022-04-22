@@ -74,6 +74,7 @@ func init() {
 		CmdMakeRequest,
 		cmd.CmdMigrate,
 		CmdMakeMigration,
+		CmdMakeFactory,
 	)
 }
 
