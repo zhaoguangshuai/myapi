@@ -6,7 +6,7 @@ import (
 )
 
 func init() {
-	fmt.Println(888)
+	fmt.Println("config/database.go/init")
 	config.Add("database", func() map[string]interface{} {
 		return map[string]interface{}{
 

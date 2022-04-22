@@ -12,7 +12,7 @@ import (
 )
 
 func init() {
-	fmt.Println(555)
+	fmt.Println("bootstrap/route.go/init")
 }
 
 // SetupRoute 路由初始化

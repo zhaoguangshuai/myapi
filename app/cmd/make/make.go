@@ -65,6 +65,7 @@ var CmdMake = &cobra.Command{
 }
 
 func init() {
+	fmt.Println("app/cmd/make/make.go/init")
 	// 注册 make 的子命令
 	CmdMake.AddCommand(
 		CmdMakeCMD,

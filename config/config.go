@@ -5,5 +5,5 @@ import "fmt"
 
 // Initialize 触发加载 config 包的所有 init 函数
 func Initialize() {
-	fmt.Println(222)
+	fmt.Println("config/config/initialize")
 }

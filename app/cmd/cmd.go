@@ -20,13 +20,14 @@ func RegisterGlobalFlags(rootCmd *cobra.Command) {
 // RegisterDefaultCmd 注册默认命令
 func RegisterDefaultCmd(rootCmd *cobra.Command, subCmd *cobra.Command) {
 	cmd, _, err := rootCmd.Find(os.Args[1:])
-	fmt.Println("cmd.use=>", cmd.Use)
-	fmt.Println("rootcmd.use=>", rootCmd.Use)
-	fmt.Println("arg1:", os.Args[1:])
+	fmt.Println("cmd.go", "cmd.Use=>", cmd.Use)
+	fmt.Println("cmd.go", "rootCmd.use=>", rootCmd.Use)
+	fmt.Println("cmd.go", "os.Args=>", os.Args)
+	fmt.Println("cmd.go", "os.Args[1:]=>", os.Args[1:])
 	firstArg := helpers.FirstElement(os.Args[1:])
 	if err == nil && cmd.Use == rootCmd.Use && firstArg != "-h" && firstArg != "--help" {
 		args := append([]string{subCmd.Use}, os.Args[1:]...)
-		fmt.Println("args=>", args)
+		fmt.Println("cmd.go", "args=>", args)
 		rootCmd.SetArgs(args)
 	}
 }

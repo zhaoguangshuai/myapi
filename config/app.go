@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	fmt.Println(333)
+	fmt.Println("config/app.go/init")
 	config.Add("app", func() map[string]interface{} {
 		return map[string]interface{}{
 

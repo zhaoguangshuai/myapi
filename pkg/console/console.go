@@ -9,7 +9,7 @@ import (
 )
 
 func init() {
-	fmt.Println(666)
+	fmt.Println("pkg/console/console.go/init")
 }
 
 // Success 打印一条成功消息，绿色输出

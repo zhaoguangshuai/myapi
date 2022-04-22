@@ -6,7 +6,7 @@ import (
 )
 
 func init() {
-	fmt.Println(777)
+	fmt.Println("config/captcha.go/init")
 	config.Add("captcha", func() map[string]interface{} {
 		return map[string]interface{}{
 
