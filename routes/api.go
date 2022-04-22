@@ -62,7 +62,7 @@ func RegisterAPIRoutes(r *gin.Engine) {
 		cgc := new(controllers.CategoriesController)
 		cgcGroup := v1.Group("/categories")
 		{
-			cgcGroup.GET("", middlewares.AuthJWT(), cgc.Index)
+			cgcGroup.GET("", cgc.Index)
 			cgcGroup.POST("", middlewares.AuthJWT(), cgc.Store)
 			cgcGroup.PUT("/:id", middlewares.AuthJWT(), cgc.Update)
 			cgcGroup.DELETE("/:id", middlewares.AuthJWT(), cgc.Delete)
@@ -73,6 +73,8 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			tgcGroup.POST("", middlewares.AuthJWT(), tgc.Store)
 			tgcGroup.PUT("/:id", middlewares.AuthJWT(), tgc.Update)
 			tgcGroup.DELETE("/:id", middlewares.AuthJWT(), tgc.Delete)
+			tgcGroup.GET("", tgc.Index)
+			tgcGroup.GET("/:id", tgc.Show)
 		}
 	}
 }
