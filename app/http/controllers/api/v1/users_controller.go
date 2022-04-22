@@ -18,7 +18,11 @@ func (ctrl *UsersController) CurrentUser(c *gin.Context) {
 	response.Data(c, userModel)
 }
 
+// Inder 所有用户
 func (ctrl *UsersController) Inder(c *gin.Context) {
-	data := user.All()
-	response.Data(c, data)
+	data, pager := user.Paginate(c, 10)
+	response.JSON(c, gin.H{
+		"data":  data,
+		"pager": pager,
+	})
 }
