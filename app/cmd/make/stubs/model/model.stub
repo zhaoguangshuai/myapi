@@ -3,7 +3,7 @@ package {{PackageName}}
 
 import (
 
-    "gohub/pkg/logger"
+    "gohub/app/models"
     "gohub/pkg/database"
 )
 
