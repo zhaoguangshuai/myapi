@@ -3,30 +3,30 @@ module gohub
 go 1.17
 
 require (
-	github.com/KenmyZhang/aliyun-communicate v0.0.0-20180308134849-7997edc57454
-	github.com/gin-gonic/gin v1.7.7
-	github.com/go-redis/redis/v8 v8.11.5
-	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible
-	github.com/mojocn/base64Captcha v1.3.5
+	github.com/KenmyZhang/aliyun-communicate v0.0.0-20180308134849-7997edc57454 // 调用阿里云发送短信的安装包
+	github.com/gin-gonic/gin v1.7.7 // web 框架 gin
+	github.com/go-redis/redis/v8 v8.11.5 // 操作 redis 的安装包
+	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible // 发送邮件的安装包
+	github.com/mojocn/base64Captcha v1.3.5 // 生成图形验证码安装包
 	github.com/spf13/cast v1.4.1 // 修改 .env 配置信息的类型使用
 	github.com/spf13/viper v1.11.0 // 解析 .env 配置信息使用
-	github.com/thedevsaddam/govalidator v1.9.10
-	go.uber.org/zap v1.21.0
-	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
-	gopkg.in/natefinch/lumberjack.v2 v2.0.0
-	gorm.io/driver/mysql v1.3.3
-	gorm.io/driver/sqlite v1.3.1
-	gorm.io/gorm v1.23.4
+	github.com/thedevsaddam/govalidator v1.9.10 // 表单验证器包
+	go.uber.org/zap v1.21.0 // Uber 开源的日志工具 zap
+	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // 数据加密包（密码加密）
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // lumberjack 是一套滚动日志的实现方案，帮助我们管理日志文件
+	gorm.io/driver/mysql v1.3.3 // mysql 驱动
+	gorm.io/driver/sqlite v1.3.1 // sqlite 驱动
+	gorm.io/gorm v1.23.4 // 数据库操作包
 )
 
 require (
-	github.com/bxcodec/faker/v3 v3.8.0
-	github.com/gertd/go-pluralize v0.2.0
-	github.com/golang-jwt/jwt v3.2.2+incompatible
-	github.com/iancoleman/strcase v0.2.0
-	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
-	github.com/spf13/cobra v1.4.0
-	github.com/ulule/limiter/v3 v3.10.0
+	github.com/bxcodec/faker/v3 v3.8.0 // 假数据工厂包
+	github.com/gertd/go-pluralize v0.2.0 // 字符串辅助方法 单数转复数 复数转单数
+	github.com/golang-jwt/jwt v3.2.2+incompatible // 接口授权辅助包
+	github.com/iancoleman/strcase v0.2.0 // 字符串辅助方法 驼峰字符串转下划线 下划线转驼峰字符串
+	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // 命令行高亮打印日志
+	github.com/spf13/cobra v1.4.0 // go 命令行依赖包
+	github.com/ulule/limiter/v3 v3.10.0 // 限流器依赖包
 )
 
 require (
