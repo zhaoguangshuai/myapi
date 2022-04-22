@@ -75,6 +75,7 @@ func init() {
 		cmd.CmdMigrate,
 		CmdMakeMigration,
 		CmdMakeFactory,
+		CmdMakeSeeder,
 	)
 }
 
