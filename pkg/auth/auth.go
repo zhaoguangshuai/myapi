@@ -35,6 +35,7 @@ func LoginByPhone(phone string) (user.User, error) {
 
 // CurrentUser 从 gin.context 中获取当前登录用户
 func CurrentUser(c *gin.Context) user.User {
+	// 接口断言
 	userModel, ok := c.MustGet("current_user").(user.User)
 	if !ok {
 		logger.LogIf(errors.New("无法获取用户"))

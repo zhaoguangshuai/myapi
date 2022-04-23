@@ -21,7 +21,7 @@ func runMakeMigration(cmd *cobra.Command, args []string) {
 	timeStr := app.TimenowInTimezone().Format("2006_01_02_150405")
 
 	model := makeModelFromString(args[0])
-	fileName := timeStr + "_add_" + model.VariableNamePlural + "_table"
+	fileName := timeStr + "_add_" + model.PackageName + "_table"
 	filePath := fmt.Sprintf("database/migrations/%s.go", fileName)
 	createFileFromStub(filePath, "migration", model, map[string]string{"{{FileName}}": fileName})
 	console.Success("Migration file created，after modify it, use `migrate up` to migrate database.")
