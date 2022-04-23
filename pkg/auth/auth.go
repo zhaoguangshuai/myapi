@@ -8,9 +8,9 @@ import (
 	"gohub/pkg/logger"
 )
 
-// Attempt 尝试登录
-func Attempt(email string, password string) (user.User, error) {
-	userModel := user.GetByMulti(email)
+// Attempt 尝试登录   loginID(登录唯一标识，可以是 name phone email)
+func Attempt(loginID string, password string) (user.User, error) {
+	userModel := user.GetByMulti(loginID)
 	if userModel.ID == 0 {
 		return user.User{}, errors.New("账号不存在")
 	}
