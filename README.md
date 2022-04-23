@@ -1,8 +1,9 @@
-# gohub
 **项目说明**
 本项目构建一个论坛API为主题，从零开始构建一个高性能，功能齐全的API程序框架。
 
 **程序结构**
+
+```go
 .├── app                            // 程序具体逻辑代码
 │   ├── cmd                         // 命令
 │   │   ├── cache.go                
@@ -119,11 +120,14 @@
 ├── .env.example                    // 环境变量示例文件
 ├── .gitignore                      // git 配置文件
 ├── .air.toml                       // air 配置文件
+├── .editorconfig                   // editorconfig 配置文件
 ├── go.mod                          // Go Module 依赖配置文件
 ├── go.sum                          // Go Module 模块版本锁定文件
 ├── main.go                         // Gohub 程序主入口
 ├── Makefile                        // 自动化命令文件
 ├── readme.md                       // 项目 readme
+```
+
 
 **所有路由**
 | 请求方法 | API地址      | 说明      |
@@ -283,4 +287,3 @@ Global Flags:
 
 Use " migrate [command] --help" for more information about a command.
 ```
-
