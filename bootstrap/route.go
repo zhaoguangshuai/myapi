@@ -36,6 +36,7 @@ func registerGlobalMiddleWare(router *gin.Engine) {
 		// gin.Recovery(),
 		// 使用 Recovery 中间件捕获异常，使用 zap 来记录异常日志，并且让程序回归到正常状态
 		middlewares.Recovery(),
+		middlewares.ForceUA(),
 	)
 }
 
